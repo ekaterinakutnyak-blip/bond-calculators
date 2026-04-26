@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кредитный анализ облигаций · Калькуляторы</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#FAFAF8;--surface:#FFF;--surface2:#F3F2EE;
+--text:#1A1A18;--text2:#6B6A65;--text3:#9C9B96;
+--accent:#2D5A3D;--accent-light:#E8F0EB;
+--accent2:#1B6B9A;--accent2-light:#E6F1FB;
+--border:#E5E4DF;
+--radius:10px;--radius-lg:14px;
+--sans:'DM Sans',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+.container{max-width:720px;margin:0 auto;padding:3rem 1.5rem}
+h1{font-size:1.6rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.25rem}
+.subtitle{font-size:0.9rem;color:var(--text2);margin-bottom:2.5rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;margin-bottom:1.25rem;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-num{font-family:var(--mono);font-size:0.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem}
+.card h2{font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:0.4rem}
+.card p{font-size:0.85rem;color:var(--text2);line-height:1.5}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:0.75rem}
+.card .tag{font-size:0.7rem;font-family:var(--mono);padding:3px 8px;border-radius:4px;background:var(--surface2);color:var(--text3)}
+.card.c1 .tag{background:var(--accent-light);color:var(--accent)}
+.card.c2 .tag{background:var(--accent2-light);color:var(--accent2)}
+.footer{margin-top:2.5rem;font-size:0.75rem;color:var(--text3);line-height:1.6}
+.footer a{color:var(--text2)}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Кредитный анализ облигаций</h1>
+  <p class="subtitle">Рыночные методы оценки вероятности дефолта · MOEX ISS API · Екатерина Кутняк</p>
+
+  <a class="card c1" href="pd-calculator.html">
+    <div class="card-num">Калькулятор 1</div>
+    <h2>Вероятность дефолта из спредов</h2>
+    <p>Наивный спред-метод: годовая и кумулятивная PD, hazard rate, expected loss. Автозагрузка облигации по ISIN, бенчмарк ОФЗ по КБД, implied рейтинг Эксперт РА, сравнение risk-neutral и physical PD.</p>
+    <div class="tags">
+      <span class="tag">ISIN → MOEX API</span>
+      <span class="tag">КБД ОФЗ</span>
+      <span class="tag">Implied rating</span>
+      <span class="tag">RN vs Physical PD</span>
+      <span class="tag">RR = 20%</span>
+    </div>
+  </a>
+
+  <a class="card c2" href="zspread-calculator.html">
+    <div class="card-num">Калькулятор 2</div>
+    <h2>Z-spread и implied PD</h2>
+    <p>Z-spread к кривой бескупонной доходности ОФЗ, рассчитанный бисекцией по денежным потокам. График КБД, полная таблица купонов и амортизаций, implied рейтинг Эксперт РА.</p>
+    <div class="tags">
+      <span class="tag">Z-spread</span>
+      <span class="tag">КБД график</span>
+      <span class="tag">Bondization API</span>
+      <span class="tag">Cash flow table</span>
+      <span class="tag">Implied rating</span>
+    </div>
+  </a>
+
+  <div class="footer">
+    Данные: <a href="https://iss.moex.com/" target="_blank">MOEX ISS API</a> (открытый доступ, без авторизации).<br>
+    Таблица дефолтов: Эксперт РА (историческая статистика).<br>
+    Risk-neutral PD из спредов обычно выше реальной (physical) PD из-за премии за кредитный риск и ликвидность.
+  </div>
+</div>
+</body>
+</html>
